@@ -33,9 +33,8 @@ export default {
       min: `0${0}`,
       hrs: `0${0}`,
 
-      playImg: 'src/assets/images/iconPlay.svg',
-      pauseImg: 'src/assets/images/iconPause.svg',
-      // stopImg: 'src/assets/images/iconStop.svg',
+      playImg: '/iconPlay.svg',
+      pauseImg: '/iconPause.svg',
 
       interval: null,
       visible: false,
@@ -47,7 +46,7 @@ export default {
   methods: {
     clickStart() {
       if (this.isRunning) {
-        this.playImg = !this.isRunning ? this.pauseImg : 'src/assets/images/iconPause.svg';
+        this.playImg = !this.isRunning ? this.pauseImg : '/iconPause.svg';
         this.interval = setInterval(() => {
           this.sec++;
           this.sec < 10 ? (this.sec = `0${this.sec}`) : this.sec;
@@ -67,7 +66,7 @@ export default {
         clearInterval(this.interval);
         this.pauseImg = this.playImg;
       }
-      this.playImg = this.isRunning ? 'src/assets/images/iconPause.svg' : 'src/assets/images/iconPlay.svg';
+      this.playImg = this.isRunning ? '/iconPause.svg' : '/iconPlay.svg';
       this.isRunning = !this.isRunning;
     },
     clickStop() {
@@ -78,7 +77,7 @@ export default {
       this.isRunning = true;
       this.minutesVisible = false;
       this.hoursVisible = false;
-      this.playImg = !this.isRunning ? this.playImg : 'src/assets/images/iconPlay.svg';
+      this.playImg = !this.isRunning ? this.playImg : '/iconPlay.svg';
     },
   },
   computed: {
@@ -134,6 +133,7 @@ export default {
   display: block;
   padding: 0;
   border: none;
+  cursor: pointer;
 
   width: 20px;
   height: 20px;
