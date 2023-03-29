@@ -76,6 +76,8 @@ export default {
       this.min = 0;
       this.hrs = 0;
       this.isRunning = true;
+      this.minutesVisible = false;
+      this.hoursVisible = false;
       this.playImg = !this.isRunning ? this.playImg : 'src/assets/images/iconPlay.svg';
     },
   },
