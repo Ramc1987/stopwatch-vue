@@ -13,12 +13,12 @@
     </div>
     <div class="stopwatch__control-buttons">
       <button class="button" @click="clickStart">
-        <img :src="playImg" alt="Запустить" />
-        <span class="visually-hidden">включить</span>
+        <img :src="playImg" alt="Запустить" :style="{ filter: isRunning ? 'brightness(1)' : 'brightness(2)' }" />
+        <span class="visually-hidden">Запустить</span>
       </button>
 
       <button class="button button--stop" @click="clickStop" :style="{ background: isRunning ? '#9e9e9e' : '#ffffff' }">
-        <span class="visually-hidden">стоп</span>
+        <span class="visually-hidden">Остановить и очистить</span>
       </button>
     </div>
   </div>
@@ -33,8 +33,8 @@ export default {
       min: `0${0}`,
       hrs: `0${0}`,
 
-      playImg: '/iconPlay.svg',
-      pauseImg: '/iconPause.svg',
+      playImg: '/stopwatch-vue/iconPlay.svg',
+      pauseImg: '/stopwatch-vue/iconPause.svg',
 
       interval: null,
       visible: false,
@@ -46,7 +46,7 @@ export default {
   methods: {
     clickStart() {
       if (this.isRunning) {
-        this.playImg = !this.isRunning ? this.pauseImg : '/iconPause.svg';
+        this.playImg = !this.isRunning ? this.pauseImg : '/stopwatch-vue/iconPause.svg';
         this.interval = setInterval(() => {
           this.sec++;
           this.sec < 10 ? (this.sec = `0${this.sec}`) : this.sec;
@@ -66,7 +66,8 @@ export default {
         clearInterval(this.interval);
         this.pauseImg = this.playImg;
       }
-      this.playImg = this.isRunning ? '/iconPause.svg' : '/iconPlay.svg';
+      this.playImg = this.isRunning ? '/stopwatch-vue/iconPause.svg' : '/stopwatch-vue/iconPlay.svg';
+
       this.isRunning = !this.isRunning;
     },
     clickStop() {
@@ -77,7 +78,7 @@ export default {
       this.isRunning = true;
       this.minutesVisible = false;
       this.hoursVisible = false;
-      this.playImg = !this.isRunning ? this.playImg : '/iconPlay.svg';
+      this.playImg = !this.isRunning ? this.playImg : '/stopwatch-vue/iconPlay.svg';
     },
   },
   computed: {
